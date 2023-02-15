@@ -9,6 +9,29 @@
     <script src="js/lib/aframe-ar.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script src="js/app.js"></script>
+    <script>
+      window.alert("Для корректной работы приложения запустите его в Chrome(Android)/Safari(iOS)");
+    </script>
+
+    <script>
+      function showOrHideDiv()
+      {
+        var v= document.getElementById("CustomBanner");
+        var t = document.getElementById("ar-button");
+      
+        if (navigator.userAgent.match(/Android/i))
+        {
+          unityInstance.SendMessage("Bridge", "SendToUnity", "Android");
+        }
+        
+        if(navigator.vendor != null && navigator.vendor.match(/Apple Computer, Inc./) && navigator.userAgent.match(/iPhone/i) || (navigator.userAgent.match(/iPod/i))) 
+
+          {
+            unityInstance.SendMessage("Bridge", "SendToUnity", "iOS");
+          }
+        }
+        window.onload = showOrHideDiv;
+    </script>
 
   </head>
 
